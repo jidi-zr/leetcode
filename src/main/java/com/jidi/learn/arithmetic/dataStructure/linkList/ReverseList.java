@@ -29,14 +29,15 @@ public class ReverseList {
 
         // 新的头节点
         ListNode newHead = stack.pop();
-        // 指向当前节点
+        // 当前指针指向新的头节点
         ListNode current = newHead;
         while (!stack.isEmpty()) {
+            // 新节点出栈
             ListNode tempNode = stack.pop();
-            // 当前节点的下一个节点就是出栈的节点
+            // 当前指针指向的节点的下一个节点就是刚出栈的新节点
             current.next = tempNode;
-            // 移动到下一个节点
-            current = current.next;
+            // 当前指针继续移动
+            current = tempNode;
         }
         // 最后一个节点就是反转前的头节点，一定要让他的next等于null，否则会构成环
         current.next = null;
@@ -55,9 +56,8 @@ public class ReverseList {
 
         // 新的链表
         ListNode newHead = null;
-
         while (head != null) {
-            // 获取下一个节点
+            // 暂存要访问的下一个节点
             ListNode next = head.next;
             // 头插法
             head.next = newHead;
