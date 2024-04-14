@@ -36,7 +36,9 @@ public class RemoveNthFromEnd {
     }
 
 
-    // 求链表的长度
+    /**
+     *  求链表的长度
+     */
     private int length(ListNode head) {
         int len = 0;
         while (head != null) {
