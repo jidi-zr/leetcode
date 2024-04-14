@@ -1,9 +1,11 @@
 package com.jidi.learn.arithmetic.dataStructure.linkList;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /**
- * 回文链表 https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnv1oc/
+ * 234. 回文链表 https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnv1oc/
  *
  * @author: jidi
  * @email: jidi_jidi@163.com
@@ -11,25 +13,51 @@ import java.util.Stack;
  */
 public class Palindrome {
 
+
+    /**
+     * 将值复制到数组中后用双指针法
+     */
+    public boolean isPalindrome(ListNode head) {
+        if (head == null) {
+            return false;
+        }
+
+        // 将链表的值复制到数组中
+        List<Integer> values = new ArrayList<>();
+        while (head != null) {
+            values.add(head.val);
+            head = head.next;
+        }
+
+        // 使用双指针判断是否回文
+        int left = 0, right = values.size() - 1;
+        while (left < right) {
+            if (!values.get(left++).equals(values.get(right--))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     /**
      * 使用栈
      */
-    public boolean isPalindrome(ListNode head) {
+    public boolean isPalindrome1(ListNode head) {
         Stack<Integer> stack = new Stack();
 
-        ListNode temp = head;
-        // 把链表节点的值存放到栈中
-        while (temp != null) {
-            stack.push(temp.val);
-            temp = temp.next;
+        // 入栈
+        ListNode current = head;
+        while (current != null) {
+            stack.push(current.val);
+            current = current.next;
         }
 
-        // 出栈
+        // 节点出栈挨个与原链表进行比较
         while (head != null) {
             if (head.val != stack.pop()) {
                 return false;
             }
-            // 移动到下一个节点
             head = head.next;
         }
         return true;
@@ -79,16 +107,15 @@ public class Palindrome {
      */
     public ListNode reverse(ListNode head) {
         ListNode prev = null;
-        while (head != null) {
+        ListNode current = head;
+        while (current != null) {
             // 先暂存下一个节点
-            ListNode next = head.next;
-
+            ListNode next = current.next;
             // 头插法
-            head.next = prev;
-            prev = head;
-
+            current.next = prev;
+            prev = current;
             // 继续处理下一个节点
-            head = next;
+            current = next;
         }
         return prev;
     }
