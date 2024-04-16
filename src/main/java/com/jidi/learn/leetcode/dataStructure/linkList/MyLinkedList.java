@@ -2,6 +2,7 @@ package com.jidi.learn.leetcode.dataStructure.linkList;
 
 /**
  * 设计链表  https://leetcode.cn/leetbook/read/linked-list/jy291/
+ * 单链表
  *
  * @author: jidi
  * @email: jidi_jidi@163.com

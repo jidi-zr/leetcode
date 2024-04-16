@@ -75,31 +75,24 @@ public class QuickSort {
      */
     int getMidIndex(int[] a, int left, int right) {
         // 取得中间位置
-        int mid = left + (left - right) / 2;
+        int mid = left + (right - left) / 2;
 
         if (a[left] < a[mid]) {
             if (a[mid] < a[right]) {
                 return mid;
-            } else {
-                if (a[left] < a[right]) {
-                    return right;
-                } else {
-                    return left;
-                }
             }
-        }
-        // a[left] > a[mid]
-        else {
-            if (a[right] < a[mid]) {
-                return mid;
-            } else {
-                if (a[right] < a[left]) {
-                    return right;
-                } else {
-                    return left;
-                }
+            if (a[left] < a[right]) {
+                return right;
             }
+            return left;
         }
+        if (a[right] < a[mid]) {
+            return mid;
+        }
+        if (a[right] < a[left]) {
+            return right;
+        }
+        return left;
     }
 
 
@@ -107,9 +100,9 @@ public class QuickSort {
      * 元素交换
      */
     private static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
     }
 
     /**
