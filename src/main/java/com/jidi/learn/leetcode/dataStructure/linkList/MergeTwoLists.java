@@ -1,7 +1,7 @@
 package com.jidi.learn.leetcode.dataStructure.linkList;
 
 /**
- * 合并两个有序链表 https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnnbp2/
+ * 21. 合并两个有序链表  https://leetcode.cn/problems/merge-two-sorted-lists/description/
  *
  * @author: jidi
  * @email: jidi_jidi@163.com
@@ -41,5 +41,27 @@ public class MergeTwoLists {
         // 处理剩余的节点
         current.next = list1 == null ? list2 : list1;
         return newHead.next;
+    }
+
+
+    /**
+     * 递归
+     */
+    public ListNode mergeTwoLists2(ListNode list1, ListNode list2) {
+        if (list1 == null) {
+            return list2;
+        }
+        if (list2 == null) {
+            return list1;
+        }
+
+        // 谁小头节点就是谁，然后继续比较下一个节点和另一个链表的头节点
+        if (list1.val < list2.val) {
+            list1.next = mergeTwoLists2(list1.next, list2);
+            return list1;
+        }
+
+        list2.next = mergeTwoLists2(list2.next, list1);
+        return list2;
     }
 }
