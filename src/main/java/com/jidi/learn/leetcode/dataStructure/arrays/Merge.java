@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * 合并区间 https://leetcode.cn/leetbook/read/array-and-string/c5tv3/
+ * 56. 合并区间 https://leetcode.cn/problems/merge-intervals/solutions/1511726/by-lin-shen-shi-jian-lu-k-wri9/
  * <p>
  * 示例 1：
  * 输入：intervals = [[1,3],[2,6],[8,10],[15,18]]
