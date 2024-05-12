@@ -54,7 +54,7 @@ public class AddTwoNumbers {
 
     
     /**
-     * 迭代模拟 
+     * 迭代模拟
      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         // 尾插法，需要一个指针指向头节点，头节点的下一个节点就是真正的头节点
@@ -95,7 +95,4 @@ public class AddTwoNumbers {
     }
 
 
-    public static void main(String[] args) {
-
-    }
 }
