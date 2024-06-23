@@ -18,6 +18,12 @@ package com.jidi.learn.leetcode.dataStructure.bits;
  */
 public class GetSum {
 
+
+    /**
+     *  0 + 0 = 0，0 + 1 = 1，1 + 0 = 1，1 + 1 = 0（进位） 结果等价于异或^
+     *  其中进位标识 carry 作用于下一位 next，相当于 next^carry ，
+     *  只有 1 + 1 需要进位，通过 (a&b)<<1 先求出所有相加需要进位的 bit，再左移一位作用于下一位。
+     */
     public int getSum(int a, int b) {
         while (b != 0) {
             int carry = (a & b) << 1;
@@ -28,6 +34,6 @@ public class GetSum {
     }
 
     public static void main(String[] args) {
-        new GetSum().getSum(3, 2);
+        System.out.println(new GetSum().getSum(3, 2));
     }
 }
