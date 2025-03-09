@@ -1,1 +1,1 @@
-# leetcode 刷题demo
+# jidi 的算法刷题旅程
